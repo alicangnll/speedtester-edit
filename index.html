@@ -1,0 +1,329 @@
+﻿<head><meta charset="big5">
+<!-- Primary Meta Tags -->
+<title>AliSpeed</title>
+<meta name="title" content="AliSpeed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="You can check your Internet speed! Faster!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://online.alicangonullu.info/speedtest//">
+<meta property="og:title" content="AliSpeed">
+<meta property="og:description" content="You can check your Internet speed! Faster!">
+<meta property="og:image" content="https://online.alicangonullu.com/speedtest/asset.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://online.alicangonullu.info/speedtest//">
+<meta property="twitter:title" content="AliSpeed">
+<meta property="twitter:description" content="You can check your Internet speed! Faster!">
+<meta property="twitter:image" content="https://online.alicangonullu.com/speedtest/asset.png">
+
+<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro.min.css">
+<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-colors.min.css">
+<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-rtl.min.css">
+<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script src="speedtest.js"></script>
+<script src="speedtest_ek.js"></script>
+<script data-ad-client="ca-pub-4499867100636951" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+</head>
+<style>
+	#loading{
+		background-color:#FFFFFF;
+		color:#404040;
+		text-align:center;
+	}
+	span.loadCircle{
+		display:inline-block;
+		width:2em;
+		height:2em;
+		vertical-align:middle;
+		margin-right:0.8em;
+		animation: spin 0.6s linear infinite;
+	}
+	#startStopBtn{
+		display:inline-block;
+		margin:0 auto;
+		color:#6060AA;
+		background-color:rgba(0,0,0,0);
+		border:0.15em solid #6060FF;
+		border-radius:0.3em;
+		transition:all 0.3s;
+		box-sizing:border-box;
+		width:8em; height:3em;
+		line-height:2.7em;
+		cursor:pointer;
+		box-shadow: 0 0 0 rgba(0,0,0,0.1), inset 0 0 0 rgba(0,0,0,0.1);
+	}
+	#startStopBtn:hover{
+		box-shadow: 0 0 2em rgba(0,0,0,0.1), inset 0 0 1em rgba(0,0,0,0.1);
+	}
+	#startStopBtn.running{
+		background-color:#FF3030;
+		border-color:#FF6060;
+		color:#FFFFFF;
+	}
+	#startStopBtn:before{
+		content:"Start / Başlat";
+	}
+	#startStopBtn.running:before{
+		content:"Abort / Durdur";
+	}
+	#serverArea{
+		margin-top:1em;
+	}
+	#server{
+		font-size:1em;
+		padding:0.2em;
+	}
+	#test{
+		margin-top:2em;
+		margin-bottom:12em;
+	}
+	div.testArea{
+		display:inline-block;
+		width:16em;
+		height:12.5em;
+		position:relative;
+		box-sizing:border-box;
+	}
+	div.testArea2{
+		display:inline-block;
+		width:14em;
+		height:7em;
+		position:relative;
+		box-sizing:border-box;
+		text-align:center;
+	}
+	div.testArea div.testName{
+		position:absolute;
+		top:0.1em; left:0;
+		width:100%;
+		font-size:1.4em;
+		z-index:9;
+	}
+	div.testArea2 div.testName{
+        display:block;
+        text-align:center;
+        font-size:1.4em;
+	}
+	div.testArea div.meterText{
+		position:absolute;
+		bottom:1.55em; left:0;
+		width:100%;
+		font-size:2.5em;
+		z-index:9;
+	}
+	div.testArea2 div.meterText{
+        display:inline-block;
+        font-size:2.5em;
+	}
+	div.meterText:empty:before{
+		content:"-";
+	}
+	div.testArea div.unit{
+		position:absolute;
+		bottom:2em; left:0;
+		width:100%;
+		z-index:9;
+	}
+	div.testArea2 div.unit{
+		display:inline-block;
+	}
+	div.testArea canvas{
+		position:absolute;
+		top:0; left:0; width:100%; height:100%;
+		z-index:1;
+	}
+	div.testGroup{
+		display:block;
+        margin: 0 auto;
+	}
+	#shareArea{
+		width:95%;
+		max-width:40em;
+		margin:0 auto;
+		margin-top:2em;
+	}
+	#shareArea > *{
+		display:block;
+		width:100%;
+		height:auto;
+		margin: 0.25em 0;
+	}
+	#privacyPolicy{
+        position:fixed;
+        top:2em;
+        bottom:2em;
+        left:2em;
+        right:2em;
+        overflow-y:auto;
+        width:auto;
+        height:auto;
+        box-shadow:0 0 3em 1em #000000;
+        z-index:999999;
+        text-align:left;
+        background-color:#FFFFFF;
+        padding:1em;
+	}
+	a.privacy{
+        text-align:center;
+        font-size:0.8em;
+        color:#808080;
+        display:block;
+	}
+	@media all and (max-width:40em){
+		body{
+			font-size:0.8em;
+		}
+	}
+	div.visible{
+		animation: fadeIn 0.4s;
+		display:block;
+	}
+	div.hidden{
+		animation: fadeOut 0.4s;
+		display:none;
+	}
+	@keyframes fadeIn{
+		0%{
+			opacity:0;
+		}
+		100%{
+			opacity:1;
+		}
+	}
+	@keyframes fadeOut{
+		0%{
+			display:block;
+			opacity:1;
+		}
+		100%{
+			display:block;
+			opacity:0;
+		}
+	}
+
+.select-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Open Sans", "Helvetica Neue", "Segoe UI", "Calibri", "Arial", sans-serif;
+  font-size: 18px;
+  color: #60666d;
+}
+    #example1 {
+        font-size: 38px;
+        font-weight: bold;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+        position: relative;
+    }
+    #example1 .char {
+        font-weight: bold;
+        display: inline-block;
+        width: 48px;
+        height: 56px;
+        line-height: 56px;
+        text-align: center;
+        text-transform: uppercase;
+        z-index: 1;
+        opacity: .8;
+    }
+    #example1 .char.te-odd {
+        background: orangered;
+        transform: skewY(-20deg);
+    }
+    #example1 .char:not(.space).te-even {
+        background: orange;
+        transform: skewY(20deg);
+    }
+
+</style>
+<center>
+<body class="container" onload="initServers()">
+<br>
+<div id="loading" class="card text-center visible mt-5">
+	<p id="message"><span class="loadCircle" data-role="activity" data-type="ring" data-style="color"></span>Selecting a server / Server Aranıyor...</p><br>
+</div>
+
+<center><div class="container" id="test" style="background-color:white;color:black;">
+<div id="example1" data-cls-token="char" data-role="tokenizer">
+    AliSpeed
+</div>
+<br>
+<div id="testWrapper" class="hidden">
+	<div id="startStopBtn" role="submit" onclick="startStop()"></div><br>
+	<div id="serverArea">
+		Server: <select class="select-box" id="server" onchange="s.setSelectedServer(SPEEDTEST_SERVERS[this.value]);"></select>
+	</div>
+	<div class="container" style="background-color: white;color:black;">
+		<div class="testGroup">
+		<br>
+				<div id="ipArea"><b><span id="ip"></span></b></div>
+				<hr></hr><br>
+            <div class="testArea2">
+				<div class="testName">Ping</div>
+				<div id="pingText" class="meterText" style="color:#AA6060"></div>
+				<div class="unit">ms</div><br>
+			</div>
+			
+			<div class="testArea2">
+				<div class="testName">Jitter</div>
+				<div id="jitText" class="meterText" style="color:#AA6060"></div>
+				<div class="unit">ms</div><br>
+			</div>
+			
+		</div>
+		<div class="testGroup">
+			<div class="testArea">
+				<canvas id="dlMeter" class="meter"></canvas>
+				<div id="dlText" class="meterText"></div>
+				<div class="unit">Mbps Download</div>
+			</div>
+			
+			<div class="testArea">
+				<canvas id="ulMeter" class="meter"></canvas>
+				<div id="ulText"class="meterText"></div>
+				<div class="unit">Mbps Upload</div>
+			</div>
+		</div><br>
+		<br>
+		<div id="shareArea"><pre id="log"></pre><br></div>
+		</div>
+	</div>
+</div></center>
+
+	<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4499867100636951"
+     data-ad-slot="9662046228"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<script>
+    function makeScreenshot() {
+        html2canvas(document.getElementById("test"), {scale: 1}).then(canvas => {
+            document.body.appendChild(canvas);
+        });
+    }
+</script>
+<script>
+    var metroAdblockSetup = {
+        checkInterval: 5000,
+        fireOnce: 3,
+        onBite: function(){
+            console.warn("Adblock present");
+        }
+    }
+</script>
+<br></body>
