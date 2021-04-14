@@ -1,6 +1,6 @@
 function I(i){return document.getElementById(i);}
 
-var SPEEDTEST_SERVERS="https://alicangonullu.github.io/speedtester-edit/speed/speedtest.php";
+var SPEEDTEST_SERVERS="https://alicangnll.github.io/speedtester-edit/speed/speedtest.php";
 
 
 var s=new Speedtest();
