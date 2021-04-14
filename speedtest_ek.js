@@ -1,5 +1,4 @@
 function I(i){return document.getElementById(i);}
-
 var SPEEDTEST_SERVERS="https://alicangnll.github.io/speedtester-edit/speed/speedtest.php";
 
 
