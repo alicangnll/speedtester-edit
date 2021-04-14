@@ -253,8 +253,8 @@
     "sponsorURL": "https://fossdaily.xyz/"
   },
   {
-      "name":"Istanbul, Türkiye, Turkey (Yoncu)",
-      "server":"\/\/online.alicangonullu.info/lisans/speedtest\/",
+      "name":"Istanbul, Türkiye, Turkey (GuzelHosting)",
+      "server":"\/\/alicangonullu.info/lisans/speedtest\/",
       "id":1,
       "dlURL":"garbage.php",
       "ulURL":"empty.php",
