@@ -63,7 +63,7 @@
     "pingURL": "empty.php",
     "getIpURL": "getIP.php",
     "sponsorName": "luki9100",
-    "sponsorURL": "https://lukas-heinrich.com/"
+    "sponsorURL": "https://lukas-heinrich.com"
   },
   {
     "name": "Helsinki, Finland 3 (Hetzner)",
