@@ -284,5 +284,16 @@
       "getIpURL":"getIP.php",
       "sponsorName":"000webhost",
       "sponsorURL":"https:\/\/000webhost.com\/"
+   },
+   {
+      "name":"AliSpeed, TR (GuzelHosting)",
+      "server":"\/\/alicangonullu.org/speedtest\/",
+      "id":4,
+      "dlURL":"garbage.php",
+      "ulURL":"empty.php",
+      "pingURL":"empty.php",
+      "getIpURL":"getIP.php",
+      "sponsorName":"Ali Can Gönüllü",
+      "sponsorURL":"https:\/\/alicangonullu.org\/"
    }
 ]
